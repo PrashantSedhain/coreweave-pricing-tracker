@@ -1,0 +1,5 @@
+{
+  "name": "coreweave-pricing-tracker",
+  "private": true,
+  "workspaces": ["scraper", "web"]
+}
