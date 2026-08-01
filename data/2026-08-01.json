@@ -1,0 +1,561 @@
+{
+  "scrapeDate": "2026-08-01",
+  "scrapedAt": "2026-08-01T08:12:54.488Z",
+  "source": "https://coreweave.com/pricing",
+  "regions": [
+    {
+      "name": "North America",
+      "gpu": [
+        {
+          "model": "NVIDIA GB300 NVL72",
+          "gpuCount": "41",
+          "vramGB": "279",
+          "vcpus": "144",
+          "systemRAMGB": "960",
+          "localStorageTB": "61.44",
+          "onDemandPrice": null,
+          "spotPrice": null,
+          "inferencePrice": null
+        },
+        {
+          "model": "NVIDIA GB200 NVL72",
+          "gpuCount": "41",
+          "vramGB": "186",
+          "vcpus": "144",
+          "systemRAMGB": "960",
+          "localStorageTB": "30.72",
+          "onDemandPrice": 42,
+          "spotPrice": null,
+          "inferencePrice": 10.5
+        },
+        {
+          "model": "NVIDIA HGX B300",
+          "gpuCount": "8",
+          "vramGB": "270",
+          "vcpus": "192",
+          "systemRAMGB": "4,096",
+          "localStorageTB": "61.44",
+          "onDemandPrice": null,
+          "spotPrice": 35.84,
+          "inferencePrice": null
+        },
+        {
+          "model": "NVIDIA HGX B200",
+          "gpuCount": "8",
+          "vramGB": "180",
+          "vcpus": "128",
+          "systemRAMGB": "2,048",
+          "localStorageTB": "61.44",
+          "onDemandPrice": 68.8,
+          "spotPrice": 34.11,
+          "inferencePrice": 8.6
+        },
+        {
+          "model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+          "gpuCount": "8",
+          "vramGB": "96",
+          "vcpus": "128",
+          "systemRAMGB": "1,024",
+          "localStorageTB": "7.68",
+          "onDemandPrice": 20,
+          "spotPrice": 11.09,
+          "inferencePrice": 2.5
+        },
+        {
+          "model": "NVIDIA HGX H100",
+          "gpuCount": "8",
+          "vramGB": "80",
+          "vcpus": "128",
+          "systemRAMGB": "2,048",
+          "localStorageTB": "61.44",
+          "onDemandPrice": 49.24,
+          "spotPrice": 19.71,
+          "inferencePrice": 6.16
+        },
+        {
+          "model": "NVIDIA HGX H200",
+          "gpuCount": "8",
+          "vramGB": "141",
+          "vcpus": "128",
+          "systemRAMGB": "2,048",
+          "localStorageTB": "61.44",
+          "onDemandPrice": 50.44,
+          "spotPrice": 20.93,
+          "inferencePrice": 6.31
+        },
+        {
+          "model": "NVIDIA GH200",
+          "gpuCount": "1",
+          "vramGB": "96",
+          "vcpus": "72",
+          "systemRAMGB": "480",
+          "localStorageTB": "7.68",
+          "onDemandPrice": 6.5,
+          "spotPrice": null,
+          "inferencePrice": 6.5
+        },
+        {
+          "model": "NVIDIA L40",
+          "gpuCount": "8",
+          "vramGB": "48",
+          "vcpus": "128",
+          "systemRAMGB": "1,024",
+          "localStorageTB": "7.68",
+          "onDemandPrice": 10,
+          "spotPrice": 6.27,
+          "inferencePrice": 1.25
+        },
+        {
+          "model": "NVIDIA L40S",
+          "gpuCount": "8",
+          "vramGB": "48",
+          "vcpus": "128",
+          "systemRAMGB": "1,024",
+          "localStorageTB": "7.68",
+          "onDemandPrice": 18,
+          "spotPrice": 7.88,
+          "inferencePrice": 2.25
+        },
+        {
+          "model": "NVIDIA A100",
+          "gpuCount": "8",
+          "vramGB": "80",
+          "vcpus": "128",
+          "systemRAMGB": "2,048",
+          "localStorageTB": "7.68",
+          "onDemandPrice": 21.6,
+          "spotPrice": 9.65,
+          "inferencePrice": 2.7
+        }
+      ],
+      "cpu": [
+        {
+          "model": "AMD Genoa (9274F)",
+          "cpuType": "High Performance",
+          "vcpus": "96",
+          "systemRAMGB": "768",
+          "localStorageTB": "7.68",
+          "onDemandPrice": 6.42,
+          "spotPrice": 3.5
+        },
+        {
+          "model": "AMD Genoa (9454)",
+          "cpuType": "General Purpose",
+          "vcpus": "192",
+          "systemRAMGB": "1,536",
+          "localStorageTB": "7.68",
+          "onDemandPrice": 7.78,
+          "spotPrice": 3.32
+        },
+        {
+          "model": "AMD Genoa (9454)",
+          "cpuType": "General Purpose (High Storage)",
+          "vcpus": "192",
+          "systemRAMGB": "1,536",
+          "localStorageTB": "61.44",
+          "onDemandPrice": 8.86,
+          "spotPrice": 4.36
+        },
+        {
+          "model": "AMD Genoa (9654)",
+          "cpuType": "High Core",
+          "vcpus": "384",
+          "systemRAMGB": "1,536",
+          "localStorageTB": "61.44",
+          "onDemandPrice": 7.54,
+          "spotPrice": 4.23
+        },
+        {
+          "model": "AMD Turin (9655P)",
+          "cpuType": "General Purpose (High Memory)",
+          "vcpus": "192",
+          "systemRAMGB": "1,536",
+          "localStorageTB": "7.68",
+          "onDemandPrice": 8.18,
+          "spotPrice": 4.62
+        },
+        {
+          "model": "AMD Turin (9655P)",
+          "cpuType": "General Purpose (Standard Memory)",
+          "vcpus": "192",
+          "systemRAMGB": "768",
+          "localStorageTB": "7.68",
+          "onDemandPrice": null,
+          "spotPrice": 3.94
+        },
+        {
+          "model": "AMD Turin (9655P)",
+          "cpuType": "General Purpose (High Storage)",
+          "vcpus": "192",
+          "systemRAMGB": "1,536",
+          "localStorageTB": "61.44",
+          "onDemandPrice": 9.31,
+          "spotPrice": 5.25
+        },
+        {
+          "model": "Intel Emerald Rapids (8562Y+)",
+          "cpuType": "General Purpose (High Memory)",
+          "vcpus": "64",
+          "systemRAMGB": "512",
+          "localStorageTB": "7.68",
+          "onDemandPrice": 5.31,
+          "spotPrice": 3.27
+        },
+        {
+          "model": "Intel Emerald Rapids (8562Y+)",
+          "cpuType": "General Purpose (Standard Memory)",
+          "vcpus": "64",
+          "systemRAMGB": "256",
+          "localStorageTB": "7.68",
+          "onDemandPrice": null,
+          "spotPrice": 2.86
+        },
+        {
+          "model": "Intel Ice Lake (6342)",
+          "cpuType": "General Purpose",
+          "vcpus": "96",
+          "systemRAMGB": "384",
+          "localStorageTB": "19.2",
+          "onDemandPrice": 3.36,
+          "spotPrice": 2.29
+        }
+      ],
+      "storage": [
+        {
+          "product": "CoreWeave AI Object Storage",
+          "tier": "Hot",
+          "price": 0.06
+        },
+        {
+          "product": "CoreWeave AI Object Storage",
+          "tier": "Warm",
+          "price": 0.03
+        },
+        {
+          "product": "CoreWeave AI Object Storage",
+          "tier": "Cold",
+          "price": 0.015
+        },
+        {
+          "product": "CoreWeave AI Object Storage",
+          "tier": "Archive",
+          "price": 0.0125
+        },
+        {
+          "product": "Distributed File Storage",
+          "tier": "-",
+          "price": 0.07
+        }
+      ],
+      "networking": [
+        {
+          "product": "Public IP Address",
+          "details": "per IP / month",
+          "price": 4
+        },
+        {
+          "product": "Bring Your Own IP",
+          "details": "one-time setup fee per IP",
+          "price": 4
+        },
+        {
+          "product": "Direct Connect 400G",
+          "details": "Dedicated DX monthly",
+          "price": 50000
+        },
+        {
+          "product": "Direct Connect 100G",
+          "details": "Dedicated DX monthly",
+          "price": 12500
+        },
+        {
+          "product": "Direct Connect 10G Dedicated",
+          "details": "Dedicated DX monthly",
+          "price": null
+        },
+        {
+          "product": "Direct Connect 10G Virtual",
+          "details": "Virtual DX monthly",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Europe",
+      "gpu": [
+        {
+          "model": "NVIDIA GB300 NVL72",
+          "gpuCount": "41",
+          "vramGB": "279",
+          "vcpus": "144",
+          "systemRAMGB": "960",
+          "localStorageTB": "61.44",
+          "onDemandPrice": null,
+          "spotPrice": null,
+          "inferencePrice": null
+        },
+        {
+          "model": "NVIDIA GB200 NVL72",
+          "gpuCount": "41",
+          "vramGB": "186",
+          "vcpus": "144",
+          "systemRAMGB": "960",
+          "localStorageTB": "30.72",
+          "onDemandPrice": 42,
+          "spotPrice": null,
+          "inferencePrice": null
+        },
+        {
+          "model": "NVIDIA HGX B300",
+          "gpuCount": "8",
+          "vramGB": "270",
+          "vcpus": "192",
+          "systemRAMGB": "4,096",
+          "localStorageTB": "61.44",
+          "onDemandPrice": null,
+          "spotPrice": 36.7,
+          "inferencePrice": null
+        },
+        {
+          "model": "NVIDIA HGX B200",
+          "gpuCount": "8",
+          "vramGB": "180",
+          "vcpus": "128",
+          "systemRAMGB": "2,048",
+          "localStorageTB": "61.44",
+          "onDemandPrice": 68.8,
+          "spotPrice": 34.87,
+          "inferencePrice": null
+        },
+        {
+          "model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+          "gpuCount": "8",
+          "vramGB": "96",
+          "vcpus": "128",
+          "systemRAMGB": "1,024",
+          "localStorageTB": "7.68",
+          "onDemandPrice": 20,
+          "spotPrice": 11.01,
+          "inferencePrice": null
+        },
+        {
+          "model": "NVIDIA HGX H100",
+          "gpuCount": "8",
+          "vramGB": "80",
+          "vcpus": "128",
+          "systemRAMGB": "2,048",
+          "localStorageTB": "61.44",
+          "onDemandPrice": 49.24,
+          "spotPrice": 19.51,
+          "inferencePrice": null
+        },
+        {
+          "model": "NVIDIA HGX H200",
+          "gpuCount": "8",
+          "vramGB": "141",
+          "vcpus": "128",
+          "systemRAMGB": "2,048",
+          "localStorageTB": "61.44",
+          "onDemandPrice": 50.44,
+          "spotPrice": 20.64,
+          "inferencePrice": null
+        },
+        {
+          "model": "NVIDIA GH200",
+          "gpuCount": "1",
+          "vramGB": "96",
+          "vcpus": "72",
+          "systemRAMGB": "480",
+          "localStorageTB": "7.68",
+          "onDemandPrice": 6.5,
+          "spotPrice": null,
+          "inferencePrice": null
+        },
+        {
+          "model": "NVIDIA L40",
+          "gpuCount": "8",
+          "vramGB": "48",
+          "vcpus": "128",
+          "systemRAMGB": "1,024",
+          "localStorageTB": "7.68",
+          "onDemandPrice": 10,
+          "spotPrice": null,
+          "inferencePrice": null
+        },
+        {
+          "model": "NVIDIA L40S",
+          "gpuCount": "8",
+          "vramGB": "48",
+          "vcpus": "128",
+          "systemRAMGB": "1,024",
+          "localStorageTB": "7.68",
+          "onDemandPrice": 18,
+          "spotPrice": null,
+          "inferencePrice": null
+        },
+        {
+          "model": "NVIDIA A100",
+          "gpuCount": "8",
+          "vramGB": "80",
+          "vcpus": "128",
+          "systemRAMGB": "2,048",
+          "localStorageTB": "7.68",
+          "onDemandPrice": 21.6,
+          "spotPrice": 9.51,
+          "inferencePrice": null
+        }
+      ],
+      "cpu": [
+        {
+          "model": "AMD Genoa (9274F)",
+          "cpuType": "High Performance",
+          "vcpus": "96",
+          "systemRAMGB": "768",
+          "localStorageTB": "7.68",
+          "onDemandPrice": 6.42,
+          "spotPrice": 3.41
+        },
+        {
+          "model": "AMD Genoa (9454)",
+          "cpuType": "General Purpose",
+          "vcpus": "192",
+          "systemRAMGB": "1,536",
+          "localStorageTB": "7.68",
+          "onDemandPrice": 7.78,
+          "spotPrice": 3.23
+        },
+        {
+          "model": "AMD Genoa (9454)",
+          "cpuType": "General Purpose (High Storage)",
+          "vcpus": "192",
+          "systemRAMGB": "1,536",
+          "localStorageTB": "61.44",
+          "onDemandPrice": 8.86,
+          "spotPrice": 4.27
+        },
+        {
+          "model": "AMD Genoa (9654)",
+          "cpuType": "High Core",
+          "vcpus": "384",
+          "systemRAMGB": "1,536",
+          "localStorageTB": "61.44",
+          "onDemandPrice": 7.54,
+          "spotPrice": 4.14
+        },
+        {
+          "model": "AMD Turin (9655P)",
+          "cpuType": "General Purpose (High Memory)",
+          "vcpus": "192",
+          "systemRAMGB": "1,536",
+          "localStorageTB": "7.68",
+          "onDemandPrice": 8.18,
+          "spotPrice": 4.63
+        },
+        {
+          "model": "AMD Turin (9655P)",
+          "cpuType": "General Purpose (Standard Memory)",
+          "vcpus": "192",
+          "systemRAMGB": "768",
+          "localStorageTB": "7.68",
+          "onDemandPrice": null,
+          "spotPrice": 4.04
+        },
+        {
+          "model": "AMD Turin (9655P)",
+          "cpuType": "General Purpose (High Storage)",
+          "vcpus": "192",
+          "systemRAMGB": "1,536",
+          "localStorageTB": "61.44",
+          "onDemandPrice": 9.31,
+          "spotPrice": 5.26
+        },
+        {
+          "model": "Intel Emerald Rapids (8562Y+)",
+          "cpuType": "General Purpose (High Memory)",
+          "vcpus": "64",
+          "systemRAMGB": "512",
+          "localStorageTB": "7.68",
+          "onDemandPrice": 5.31,
+          "spotPrice": 3.31
+        },
+        {
+          "model": "Intel Emerald Rapids (8562Y+)",
+          "cpuType": "General Purpose (Standard Memory)",
+          "vcpus": "64",
+          "systemRAMGB": "256",
+          "localStorageTB": "7.68",
+          "onDemandPrice": null,
+          "spotPrice": 2.98
+        },
+        {
+          "model": "Intel Ice Lake (6342)",
+          "cpuType": "General Purpose",
+          "vcpus": "96",
+          "systemRAMGB": "384",
+          "localStorageTB": "19.2",
+          "onDemandPrice": 3.36,
+          "spotPrice": 2.19
+        }
+      ],
+      "storage": [
+        {
+          "product": "CoreWeave AI Object Storage",
+          "tier": "Hot",
+          "price": 0.06
+        },
+        {
+          "product": "CoreWeave AI Object Storage",
+          "tier": "Warm",
+          "price": 0.03
+        },
+        {
+          "product": "CoreWeave AI Object Storage",
+          "tier": "Cold",
+          "price": 0.015
+        },
+        {
+          "product": "CoreWeave AI Object Storage",
+          "tier": "Archive",
+          "price": 0.0125
+        },
+        {
+          "product": "Distributed File Storage",
+          "tier": "-",
+          "price": 0.07
+        }
+      ],
+      "networking": [
+        {
+          "product": "Public IP Address",
+          "details": "per IP / month",
+          "price": 4
+        },
+        {
+          "product": "Bring Your Own IP",
+          "details": "one-time setup fee per IP",
+          "price": 4
+        },
+        {
+          "product": "Direct Connect 400G",
+          "details": "Dedicated DX monthly",
+          "price": 50000
+        },
+        {
+          "product": "Direct Connect 100G",
+          "details": "Dedicated DX monthly",
+          "price": 12500
+        },
+        {
+          "product": "Direct Connect 10G Dedicated",
+          "details": "Dedicated DX monthly",
+          "price": null
+        },
+        {
+          "product": "Direct Connect 10G Virtual",
+          "details": "Virtual DX monthly",
+          "price": null
+        }
+      ]
+    }
+  ]
+}
