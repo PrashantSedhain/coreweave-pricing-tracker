@@ -1,6 +1,11 @@
 {
   "buildCommand": "cd web && npm run prebuild && npm run build",
   "outputDirectory": "web/.next",
-  "installCommand": "cd web && npm install",
-  "framework": "nextjs"
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "build": {
+    "env": {
+      "NEXT_TELEMETRY_DISABLED": "1"
+    }
+  }
 }
