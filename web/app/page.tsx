@@ -2,6 +2,8 @@ import { Suspense } from "react";
 import { getDashboardData } from "../lib/data";
 import Dashboard from "../components/Dashboard";
 
+export const dynamic = "force-dynamic";
+
 function DashboardFallback() {
   return (
     <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: "var(--bg-primary)" }}>
