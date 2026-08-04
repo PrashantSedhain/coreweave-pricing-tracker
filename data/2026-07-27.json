@@ -1,7 +1,7 @@
 {
-  "scrapeDate": "2026-07-29",
-  "scrapedAt": "2026-07-29T19:35:20.447Z",
-  "source": "https://coreweave.com/pricing",
+  "scrapeDate": "2026-07-27",
+  "scrapedAt": "2026-07-27T00:00:00.000Z",
+  "source": "https://web.archive.org/web/20260727103436id_/https://coreweave.com/pricing",
   "regions": [
     {
       "name": "North America",
@@ -244,7 +244,7 @@
         {
           "product": "Distributed File Storage",
           "tier": "-",
-          "price": 0.07
+          "price": 42
         }
       ],
       "networking": [
@@ -271,7 +271,7 @@
         {
           "product": "Direct Connect 10G Dedicated",
           "details": "Dedicated DX monthly",
-          "price": null
+          "price": 1500
         },
         {
           "product": "Direct Connect 10G Virtual",
@@ -495,6 +495,69 @@
           "localStorageTB": "19.2",
           "onDemandPrice": 3.36,
           "spotPrice": 2.19
+        },
+        {
+          "model": "AMD Turin (9655P)",
+          "cpuType": "SIMILAR TO",
+          "vcpus": "TECH SPECS",
+          "systemRAMGB": "GPU Memory",
+          "localStorageTB": "This is some text inside of a div block.",
+          "onDemandPrice": null,
+          "spotPrice": null
+        },
+        {
+          "model": "Intel Ice Lake (6342)",
+          "cpuType": "SIMILAR TO",
+          "vcpus": "TECH SPECS",
+          "systemRAMGB": "GPU Memory",
+          "localStorageTB": "This is some text inside of a div block.",
+          "onDemandPrice": 30072,
+          "spotPrice": null
+        },
+        {
+          "model": "AMD Genoa (9454)",
+          "cpuType": "SIMILAR TO",
+          "vcpus": "TECH SPECS",
+          "systemRAMGB": "GPU Memory",
+          "localStorageTB": "This is some text inside of a div block.",
+          "onDemandPrice": null,
+          "spotPrice": null
+        },
+        {
+          "model": "AMD Turin (9655P)",
+          "cpuType": "SIMILAR TO",
+          "vcpus": "TECH SPECS",
+          "systemRAMGB": "GPU Memory",
+          "localStorageTB": "This is some text inside of a div block.",
+          "onDemandPrice": null,
+          "spotPrice": null
+        },
+        {
+          "model": "AMD Genoa (9274F)",
+          "cpuType": "SIMILAR TO",
+          "vcpus": "TECH SPECS",
+          "systemRAMGB": "GPU Memory",
+          "localStorageTB": "This is some text inside of a div block.",
+          "onDemandPrice": 40,
+          "spotPrice": null
+        },
+        {
+          "model": "Intel Xeon Scalable",
+          "cpuType": "TECH SPECS",
+          "vcpus": "GPU Memory",
+          "systemRAMGB": "This is some text inside of a div block.",
+          "localStorageTB": "NVIDIA H100 PCIe",
+          "onDemandPrice": null,
+          "spotPrice": 100
+        },
+        {
+          "model": "AMD EPYC Rome",
+          "cpuType": "TECH SPECS",
+          "vcpus": "GPU Memory",
+          "systemRAMGB": "This is some text inside of a div block.",
+          "localStorageTB": "Quadro RTX 4000",
+          "onDemandPrice": null,
+          "spotPrice": 5000
         }
       ],
       "storage": [
@@ -521,7 +584,7 @@
         {
           "product": "Distributed File Storage",
           "tier": "-",
-          "price": 0.07
+          "price": 42
         }
       ],
       "networking": [
@@ -548,7 +611,7 @@
         {
           "product": "Direct Connect 10G Dedicated",
           "details": "Dedicated DX monthly",
-          "price": null
+          "price": 1500
         },
         {
           "product": "Direct Connect 10G Virtual",

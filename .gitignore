@@ -2,3 +2,7 @@ node_modules/
 .next/
 .env
 .env.local
+
+*.tsbuildinfo
+web/public/data/
+web/public/previews/

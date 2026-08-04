@@ -1,7 +1,7 @@
 {
-  "scrapeDate": "2026-07-29",
-  "scrapedAt": "2026-07-29T19:35:20.447Z",
-  "source": "https://coreweave.com/pricing",
+  "scrapeDate": "2026-04-29",
+  "scrapedAt": "2026-04-29T00:00:00.000Z",
+  "source": "https://web.archive.org/web/20260429003247id_/https://coreweave.com/pricing",
   "regions": [
     {
       "name": "North America",
@@ -36,7 +36,7 @@
           "systemRAMGB": "4,096",
           "localStorageTB": "61.44",
           "onDemandPrice": null,
-          "spotPrice": 35.84,
+          "spotPrice": null,
           "inferencePrice": null
         },
         {
@@ -47,7 +47,7 @@
           "systemRAMGB": "2,048",
           "localStorageTB": "61.44",
           "onDemandPrice": 68.8,
-          "spotPrice": 34.11,
+          "spotPrice": null,
           "inferencePrice": 8.6
         },
         {
@@ -58,7 +58,7 @@
           "systemRAMGB": "1,024",
           "localStorageTB": "7.68",
           "onDemandPrice": 20,
-          "spotPrice": 11.09,
+          "spotPrice": 9.24,
           "inferencePrice": 2.5
         },
         {
@@ -69,7 +69,7 @@
           "systemRAMGB": "2,048",
           "localStorageTB": "61.44",
           "onDemandPrice": 49.24,
-          "spotPrice": 19.71,
+          "spotPrice": null,
           "inferencePrice": 6.16
         },
         {
@@ -80,7 +80,7 @@
           "systemRAMGB": "2,048",
           "localStorageTB": "61.44",
           "onDemandPrice": 50.44,
-          "spotPrice": 20.93,
+          "spotPrice": null,
           "inferencePrice": 6.31
         },
         {
@@ -102,7 +102,7 @@
           "systemRAMGB": "1,024",
           "localStorageTB": "7.68",
           "onDemandPrice": 10,
-          "spotPrice": 6.27,
+          "spotPrice": null,
           "inferencePrice": 1.25
         },
         {
@@ -113,7 +113,7 @@
           "systemRAMGB": "1,024",
           "localStorageTB": "7.68",
           "onDemandPrice": 18,
-          "spotPrice": 7.88,
+          "spotPrice": null,
           "inferencePrice": 2.25
         },
         {
@@ -124,7 +124,7 @@
           "systemRAMGB": "2,048",
           "localStorageTB": "7.68",
           "onDemandPrice": 21.6,
-          "spotPrice": 9.65,
+          "spotPrice": null,
           "inferencePrice": 2.7
         }
       ],
@@ -136,7 +136,7 @@
           "systemRAMGB": "768",
           "localStorageTB": "7.68",
           "onDemandPrice": 6.42,
-          "spotPrice": 3.5
+          "spotPrice": 2.99
         },
         {
           "model": "AMD Genoa (9454)",
@@ -145,16 +145,16 @@
           "systemRAMGB": "1,536",
           "localStorageTB": "7.68",
           "onDemandPrice": 7.78,
-          "spotPrice": 3.32
+          "spotPrice": 4.5
         },
         {
           "model": "AMD Genoa (9454)",
-          "cpuType": "General Purpose (High Storage)",
+          "cpuType": "General Purpose - High Storage",
           "vcpus": "192",
           "systemRAMGB": "1,536",
           "localStorageTB": "61.44",
           "onDemandPrice": 8.86,
-          "spotPrice": 4.36
+          "spotPrice": 8.02
         },
         {
           "model": "AMD Genoa (9654)",
@@ -163,52 +163,34 @@
           "systemRAMGB": "1,536",
           "localStorageTB": "61.44",
           "onDemandPrice": 7.54,
-          "spotPrice": 4.23
+          "spotPrice": 6.96
         },
         {
           "model": "AMD Turin (9655P)",
-          "cpuType": "General Purpose (High Memory)",
+          "cpuType": "General Purpose",
           "vcpus": "192",
           "systemRAMGB": "1,536",
           "localStorageTB": "7.68",
           "onDemandPrice": 8.18,
-          "spotPrice": 4.62
+          "spotPrice": 4.45
         },
         {
           "model": "AMD Turin (9655P)",
-          "cpuType": "General Purpose (Standard Memory)",
-          "vcpus": "192",
-          "systemRAMGB": "768",
-          "localStorageTB": "7.68",
-          "onDemandPrice": null,
-          "spotPrice": 3.94
-        },
-        {
-          "model": "AMD Turin (9655P)",
-          "cpuType": "General Purpose (High Storage)",
+          "cpuType": "General Purpose - High Storage",
           "vcpus": "192",
           "systemRAMGB": "1,536",
           "localStorageTB": "61.44",
           "onDemandPrice": 9.31,
-          "spotPrice": 5.25
+          "spotPrice": null
         },
         {
           "model": "Intel Emerald Rapids (8562Y+)",
-          "cpuType": "General Purpose (High Memory)",
+          "cpuType": "General Purpose",
           "vcpus": "64",
           "systemRAMGB": "512",
           "localStorageTB": "7.68",
           "onDemandPrice": 5.31,
-          "spotPrice": 3.27
-        },
-        {
-          "model": "Intel Emerald Rapids (8562Y+)",
-          "cpuType": "General Purpose (Standard Memory)",
-          "vcpus": "64",
-          "systemRAMGB": "256",
-          "localStorageTB": "7.68",
-          "onDemandPrice": null,
-          "spotPrice": 2.86
+          "spotPrice": 2.11
         },
         {
           "model": "Intel Ice Lake (6342)",
@@ -217,7 +199,7 @@
           "systemRAMGB": "384",
           "localStorageTB": "19.2",
           "onDemandPrice": 3.36,
-          "spotPrice": 2.29
+          "spotPrice": null
         }
       ],
       "storage": [
@@ -244,7 +226,7 @@
         {
           "product": "Distributed File Storage",
           "tier": "-",
-          "price": 0.07
+          "price": 42
         }
       ],
       "networking": [
@@ -271,7 +253,7 @@
         {
           "product": "Direct Connect 10G Dedicated",
           "details": "Dedicated DX monthly",
-          "price": null
+          "price": 1500
         },
         {
           "product": "Direct Connect 10G Virtual",
@@ -313,7 +295,7 @@
           "systemRAMGB": "4,096",
           "localStorageTB": "61.44",
           "onDemandPrice": null,
-          "spotPrice": 36.7,
+          "spotPrice": null,
           "inferencePrice": null
         },
         {
@@ -324,7 +306,7 @@
           "systemRAMGB": "2,048",
           "localStorageTB": "61.44",
           "onDemandPrice": 68.8,
-          "spotPrice": 34.87,
+          "spotPrice": null,
           "inferencePrice": null
         },
         {
@@ -335,7 +317,7 @@
           "systemRAMGB": "1,024",
           "localStorageTB": "7.68",
           "onDemandPrice": 20,
-          "spotPrice": 11.01,
+          "spotPrice": 9.24,
           "inferencePrice": null
         },
         {
@@ -346,7 +328,7 @@
           "systemRAMGB": "2,048",
           "localStorageTB": "61.44",
           "onDemandPrice": 49.24,
-          "spotPrice": 19.51,
+          "spotPrice": null,
           "inferencePrice": null
         },
         {
@@ -357,7 +339,7 @@
           "systemRAMGB": "2,048",
           "localStorageTB": "61.44",
           "onDemandPrice": 50.44,
-          "spotPrice": 20.64,
+          "spotPrice": null,
           "inferencePrice": null
         },
         {
@@ -401,7 +383,7 @@
           "systemRAMGB": "2,048",
           "localStorageTB": "7.68",
           "onDemandPrice": 21.6,
-          "spotPrice": 9.51,
+          "spotPrice": null,
           "inferencePrice": null
         }
       ],
@@ -413,7 +395,7 @@
           "systemRAMGB": "768",
           "localStorageTB": "7.68",
           "onDemandPrice": 6.42,
-          "spotPrice": 3.41
+          "spotPrice": 2.99
         },
         {
           "model": "AMD Genoa (9454)",
@@ -422,16 +404,16 @@
           "systemRAMGB": "1,536",
           "localStorageTB": "7.68",
           "onDemandPrice": 7.78,
-          "spotPrice": 3.23
+          "spotPrice": 4.5
         },
         {
           "model": "AMD Genoa (9454)",
-          "cpuType": "General Purpose (High Storage)",
+          "cpuType": "General Purpose - High Storage",
           "vcpus": "192",
           "systemRAMGB": "1,536",
           "localStorageTB": "61.44",
           "onDemandPrice": 8.86,
-          "spotPrice": 4.27
+          "spotPrice": 8.02
         },
         {
           "model": "AMD Genoa (9654)",
@@ -440,52 +422,34 @@
           "systemRAMGB": "1,536",
           "localStorageTB": "61.44",
           "onDemandPrice": 7.54,
-          "spotPrice": 4.14
+          "spotPrice": 6.96
         },
         {
           "model": "AMD Turin (9655P)",
-          "cpuType": "General Purpose (High Memory)",
+          "cpuType": "General Purpose",
           "vcpus": "192",
           "systemRAMGB": "1,536",
           "localStorageTB": "7.68",
           "onDemandPrice": 8.18,
-          "spotPrice": 4.63
+          "spotPrice": 4.45
         },
         {
           "model": "AMD Turin (9655P)",
-          "cpuType": "General Purpose (Standard Memory)",
-          "vcpus": "192",
-          "systemRAMGB": "768",
-          "localStorageTB": "7.68",
-          "onDemandPrice": null,
-          "spotPrice": 4.04
-        },
-        {
-          "model": "AMD Turin (9655P)",
-          "cpuType": "General Purpose (High Storage)",
+          "cpuType": "General Purpose - High Storage",
           "vcpus": "192",
           "systemRAMGB": "1,536",
           "localStorageTB": "61.44",
           "onDemandPrice": 9.31,
-          "spotPrice": 5.26
+          "spotPrice": null
         },
         {
           "model": "Intel Emerald Rapids (8562Y+)",
-          "cpuType": "General Purpose (High Memory)",
+          "cpuType": "General Purpose",
           "vcpus": "64",
           "systemRAMGB": "512",
           "localStorageTB": "7.68",
           "onDemandPrice": 5.31,
-          "spotPrice": 3.31
-        },
-        {
-          "model": "Intel Emerald Rapids (8562Y+)",
-          "cpuType": "General Purpose (Standard Memory)",
-          "vcpus": "64",
-          "systemRAMGB": "256",
-          "localStorageTB": "7.68",
-          "onDemandPrice": null,
-          "spotPrice": 2.98
+          "spotPrice": 2.11
         },
         {
           "model": "Intel Ice Lake (6342)",
@@ -494,7 +458,61 @@
           "systemRAMGB": "384",
           "localStorageTB": "19.2",
           "onDemandPrice": 3.36,
-          "spotPrice": 2.19
+          "spotPrice": null
+        },
+        {
+          "model": "Intel Ice Lake (6342)",
+          "cpuType": "SIMILAR TO",
+          "vcpus": "TECH SPECS",
+          "systemRAMGB": "GPU Memory",
+          "localStorageTB": "This is some text inside of a div block.",
+          "onDemandPrice": 30072,
+          "spotPrice": null
+        },
+        {
+          "model": "AMD Genoa (9454)",
+          "cpuType": "SIMILAR TO",
+          "vcpus": "TECH SPECS",
+          "systemRAMGB": "GPU Memory",
+          "localStorageTB": "This is some text inside of a div block.",
+          "onDemandPrice": null,
+          "spotPrice": null
+        },
+        {
+          "model": "AMD Turin (9655P)",
+          "cpuType": "SIMILAR TO",
+          "vcpus": "TECH SPECS",
+          "systemRAMGB": "GPU Memory",
+          "localStorageTB": "This is some text inside of a div block.",
+          "onDemandPrice": null,
+          "spotPrice": null
+        },
+        {
+          "model": "AMD Genoa (9274F)",
+          "cpuType": "SIMILAR TO",
+          "vcpus": "TECH SPECS",
+          "systemRAMGB": "GPU Memory",
+          "localStorageTB": "This is some text inside of a div block.",
+          "onDemandPrice": 40,
+          "spotPrice": null
+        },
+        {
+          "model": "Intel Xeon Scalable",
+          "cpuType": "TECH SPECS",
+          "vcpus": "GPU Memory",
+          "systemRAMGB": "This is some text inside of a div block.",
+          "localStorageTB": "NVIDIA H100 PCIe",
+          "onDemandPrice": null,
+          "spotPrice": 100
+        },
+        {
+          "model": "AMD EPYC Rome",
+          "cpuType": "TECH SPECS",
+          "vcpus": "GPU Memory",
+          "systemRAMGB": "This is some text inside of a div block.",
+          "localStorageTB": "Quadro RTX 4000",
+          "onDemandPrice": null,
+          "spotPrice": 5000
         }
       ],
       "storage": [
@@ -521,7 +539,7 @@
         {
           "product": "Distributed File Storage",
           "tier": "-",
-          "price": 0.07
+          "price": 42
         }
       ],
       "networking": [
@@ -548,7 +566,7 @@
         {
           "product": "Direct Connect 10G Dedicated",
           "details": "Dedicated DX monthly",
-          "price": null
+          "price": 1500
         },
         {
           "product": "Direct Connect 10G Virtual",

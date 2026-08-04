@@ -8,17 +8,17 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  Legend,
 } from "recharts";
 import type { PricePoint } from "../types";
 
 interface PriceChartProps {
   data: PricePoint[];
-  color: string;
-  label: string;
+  color?: string;
+  height?: number;
+  showDots?: boolean;
 }
 
-function formatChartData(points: PricePoint[]) {
+function fmtData(points: PricePoint[]) {
   return points
     .filter((p) => p.price !== null)
     .map((p) => ({
@@ -27,58 +27,99 @@ function formatChartData(points: PricePoint[]) {
     }));
 }
 
-export default function PriceChart({ data, color, label }: PriceChartProps) {
-  const chartData = formatChartData(data);
+export default function PriceChart({
+  data,
+  color = "var(--accent)",
+  height = 200,
+  showDots = true,
+}: PriceChartProps) {
+  const chartData = fmtData(data);
+  const allNull = data.length > 0 && chartData.length === 0;
 
-  if (chartData.length < 2) {
+  if (allNull) {
     return (
-      <div className="h-[200px] flex items-center justify-center text-gray-500 text-sm">
-        Not enough data points for {label}
+      <div
+        className="flex items-center justify-center text-center rounded-md px-3 py-3"
+        style={{
+          height,
+          color: "var(--text-muted)",
+          backgroundColor: "var(--bg-tertiary)",
+          fontSize: 13,
+          lineHeight: 1.5,
+        }}
+      >
+        Pricing not published
+        <br />
+        (contact sales)
+      </div>
+    );
+  }
+
+  if (chartData.length === 0) {
+    return (
+      <div
+        className="flex items-center justify-center text-sm rounded-md"
+        style={{
+          height,
+          color: "var(--text-muted)",
+          backgroundColor: "var(--bg-tertiary)",
+        }}
+      >
+        No data available
       </div>
     );
   }
 
   const prices = chartData.map((d) => d.price!);
-  const min = Math.floor(Math.min(...prices) * 0.95);
-  const max = Math.ceil(Math.max(...prices) * 1.05);
+  const min = Math.min(...prices);
+  const max = Math.max(...prices);
+  const range = max - min;
+  const pad = Math.max(range * 0.1, 0.5);
+
+  const gridColor = "var(--border-color)";
+  const tickColor = "var(--text-muted)";
 
   return (
-    <div className="h-[200px] w-full">
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={chartData} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" />
+    <div style={{ width: "100%", height }}>
+      <ResponsiveContainer>
+        <LineChart data={chartData} margin={{ top: 5, right: 5, left: 0, bottom: 5 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke={gridColor} />
           <XAxis
             dataKey="date"
-            tick={{ fill: "#9ca3af", fontSize: 11 }}
+            tick={{ fill: tickColor, fontSize: 11 }}
             tickLine={false}
-            axisLine={{ stroke: "#374151" }}
+            axisLine={{ stroke: gridColor }}
+            interval="preserveStartEnd"
           />
           <YAxis
-            domain={[min, max]}
-            tick={{ fill: "#9ca3af", fontSize: 11 }}
+            domain={[min - pad, max + pad]}
+            tick={{ fill: tickColor, fontSize: 11 }}
             tickLine={false}
-            axisLine={{ stroke: "#374151" }}
-            tickFormatter={(v: number) => `$${v}`}
+            axisLine={{ stroke: gridColor }}
+            tickFormatter={(v: number) => {
+              if (v >= 1000) return `$${(v / 1000).toFixed(1)}k`;
+              return `$${v.toFixed(v < 10 ? 2 : 0)}`;
+            }}
+            width={55}
           />
           <Tooltip
             contentStyle={{
-              backgroundColor: "#111827",
-              border: "1px solid #374151",
-              borderRadius: "8px",
+              backgroundColor: "var(--bg-surface)",
+              border: "1px solid var(--border-color)",
+              borderRadius: "6px",
               fontSize: "13px",
+              color: "var(--text-primary)",
             }}
-            labelStyle={{ color: "#9ca3af" }}
-            formatter={(value: number) => [`$${value.toFixed(2)}`, label]}
+            labelStyle={{ color: "var(--text-dim)", marginBottom: 2 }}
+            formatter={(value: number) => [`$${value.toFixed(2)}`, "Price"]}
           />
-          <Legend wrapperStyle={{ fontSize: "12px", color: "#9ca3af" }} />
           <Line
             type="monotone"
             dataKey="price"
             stroke={color}
             strokeWidth={2}
-            dot={{ r: 3, fill: color }}
-            activeDot={{ r: 5 }}
-            name={label}
+            dot={showDots ? { r: 3, fill: color } : false}
+            activeDot={{ r: 5, fill: color }}
           />
         </LineChart>
       </ResponsiveContainer>
