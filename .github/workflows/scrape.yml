@@ -40,11 +40,3 @@ jobs:
             git commit -m "chore: scrape pricing $(date +%Y-%m-%d)"
             git push
           fi
-
-      - name: Trigger Vercel redeploy
-        run: |
-          if [ -n "${{ secrets.VERCEL_DEPLOY_HOOK }}" ]; then
-            curl -X POST "${{ secrets.VERCEL_DEPLOY_HOOK }}"
-          else
-            echo "VERCEL_DEPLOY_HOOK not set — redeploy skipped. Set it for auto-refresh."
-          fi
