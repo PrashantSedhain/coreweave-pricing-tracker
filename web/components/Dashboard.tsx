@@ -100,6 +100,7 @@ export default function Dashboard({ data }: { data: DashboardData }) {
   const validTab = tabFromUrl && ["gpu", "cpu", "storage", "networking"].includes(tabFromUrl) ? tabFromUrl : "gpu";
 
   const [category, setCategory] = useState<"gpu" | "cpu" | "storage" | "networking">(validTab);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const changeTab = (cat: "gpu" | "cpu" | "storage" | "networking") => {
     setCategory(cat);
@@ -275,26 +276,38 @@ export default function Dashboard({ data }: { data: DashboardData }) {
   const netRanged = applyTimeRange(netChartSeries, netTimeRange);
 
   return (
-    <div className="flex min-h-screen" style={{ backgroundColor: "var(--bg-primary)" }}>
+    <div className="flex flex-col md:flex-row min-h-screen" style={{ backgroundColor: "var(--bg-primary)" }}>
       <Sidebar
         category={category}
         onChange={changeTab}
         gpuCount={gpuCount}
         cpuCount={cpuCount}
+        open={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
       />
 
-      <main className="flex-1 p-6 overflow-x-auto" style={{ minWidth: 0 }}>
-        <header className="mb-5 flex items-center justify-between">
-          <div>
-            <h1 className="text-xl font-bold" style={{ color: "var(--text-primary)" }}>
-              CoreWeave GPU Pricing
-            </h1>
-            <div className="flex items-center gap-3 mt-1 text-sm" style={{ color: "var(--text-dim)" }}>
-              <span>{totalSnapshots} snapshots</span>
-              <span>·</span>
-              <span>
-                Updated{" "}
-                {new Date(latest.scrapedAt).toLocaleDateString("en-US", {
+      <main className="flex-1 p-3 sm:p-4 md:p-6 overflow-x-auto w-full" style={{ minWidth: 0 }}>
+        <header className="mb-4 sm:mb-5 flex items-center justify-between">
+          <div className="flex items-center gap-2 md:gap-0">
+            <button
+              onClick={() => setSidebarOpen(true)}
+              className="md:hidden p-1.5 -ml-1 rounded"
+              style={{ color: "var(--text-dim)" }}
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M2 4h16v2H2V4zm0 5h16v2H2V9zm0 5h16v2H2v-2z"/>
+              </svg>
+            </button>
+            <div>
+              <h1 className="text-lg sm:text-xl font-bold" style={{ color: "var(--text-primary)" }}>
+                CoreWeave GPU Pricing
+              </h1>
+              <div className="flex items-center gap-2 sm:gap-3 mt-1 text-xs sm:text-sm flex-wrap" style={{ color: "var(--text-dim)" }}>
+                <span>{totalSnapshots} snapshots</span>
+                <span className="hidden sm:inline">·</span>
+                <span className="hidden sm:inline">
+                  Updated{" "}
+                  {new Date(latest.scrapedAt).toLocaleDateString("en-US", {
                   month: "short",
                   day: "numeric",
                   hour: "numeric",
@@ -302,6 +315,7 @@ export default function Dashboard({ data }: { data: DashboardData }) {
                 })}
               </span>
             </div>
+          </div>
           </div>
         </header>
 
@@ -419,7 +433,7 @@ export default function Dashboard({ data }: { data: DashboardData }) {
                     );
                   })}
                 </div>
-                <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 mb-5">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-5 mb-3 sm:mb-5">
                   {(["North America", "Europe"] as const).map((region) => {
                     const allRegionSeries = gpuSeries.filter(
                       (s) => s.region === region && filteredModels.some((m) => m === s.model)
@@ -446,7 +460,7 @@ export default function Dashboard({ data }: { data: DashboardData }) {
                     return (
                       <div
                         key={region}
-                        className="p-5 rounded-lg"
+                        className="p-3 sm:p-5 rounded-lg"
                         style={{ backgroundColor: "var(--bg-surface)", border: "1px solid var(--border-color)" }}
                       >
                         <h3 className="text-sm font-semibold uppercase tracking-wide mb-2" style={{ color: "var(--accent)" }}>
@@ -454,12 +468,12 @@ export default function Dashboard({ data }: { data: DashboardData }) {
                         </h3>
                         <div className="mb-3">
                           <div className="text-xs uppercase tracking-wide font-medium mb-1" style={{ color: "var(--text-dim)" }}>On-Demand</div>
-                          <MultiLineChart lines={lines} height={350} showDots={rangedSeries.length > 0 && rangedSeries[0]?.onDemand.length < 15} />
+                          <MultiLineChart lines={lines} height={280} showDots={rangedSeries.length > 0 && rangedSeries[0]?.onDemand.length < 15} />
                         </div>
                         {spotLines.length > 0 && (
                           <div>
                             <div className="text-xs uppercase tracking-wide font-medium mb-1" style={{ color: "var(--text-dim)" }}>Spot</div>
-                            <MultiLineChart lines={spotLines} height={350} showDots={rangedSeries.length > 0 && rangedSeries[0]?.spot.length < 15} />
+                            <MultiLineChart lines={spotLines} height={260} showDots={rangedSeries.length > 0 && rangedSeries[0]?.spot.length < 15} />
                           </div>
                         )}
                       </div>
@@ -494,26 +508,26 @@ export default function Dashboard({ data }: { data: DashboardData }) {
             {!showCombined && displayModel && !contactOnlyModels.includes(displayModel) && (
             <>
             <div
-              className="flex items-center gap-3 px-4 py-3 rounded-lg mb-5 text-sm flex-wrap"
+              className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 sm:py-3 rounded-lg mb-3 sm:mb-5 text-xs sm:text-sm flex-wrap"
               style={{ backgroundColor: "var(--bg-surface)", border: "1px solid var(--border-color)" }}
             >
-              <span className="font-semibold" style={{ color: "var(--text-primary)" }}>{displayModel}</span>
-              <span style={{ color: "var(--text-muted)" }}>·</span>
-              <span style={{ color: "var(--text-dim)" }}>NA OnDem: <span className="font-mono font-semibold" style={{ color: "var(--text-primary)" }}>{naOnDemand !== null ? `$${naOnDemand.toFixed(2)}` : "Contact"}</span> <span className="font-mono text-xs" style={{ color: naOnDemandDelta.up ? "var(--danger)" : naOnDemandDelta.flat ? "var(--text-muted)" : "var(--success)" }}>{naOnDemandDelta.text}</span></span>
-              <span style={{ color: "var(--text-dim)" }}>NA Spot: <span className="font-mono font-semibold" style={{ color: "var(--text-primary)" }}>{naSpot !== null ? `$${naSpot.toFixed(2)}` : "N/A"}</span> <span className="font-mono text-xs" style={{ color: naSpotDelta.up ? "var(--danger)" : naSpotDelta.flat ? "var(--text-muted)" : "var(--success)" }}>{naSpotDelta.text}</span></span>
-              <span style={{ color: "var(--text-muted)" }}>·</span>
-              <span style={{ color: "var(--text-dim)" }}>EU OnDem: <span className="font-mono font-semibold" style={{ color: "var(--text-primary)" }}>{euOnDemand !== null ? `$${euOnDemand.toFixed(2)}` : "Contact"}</span> <span className="font-mono text-xs" style={{ color: euOnDemandDelta.up ? "var(--danger)" : euOnDemandDelta.flat ? "var(--text-muted)" : "var(--success)" }}>{euOnDemandDelta.text}</span></span>
-              <span style={{ color: "var(--text-dim)" }}>EU Spot: <span className="font-mono font-semibold" style={{ color: "var(--text-primary)" }}>{euSpot !== null ? `$${euSpot.toFixed(2)}` : "N/A"}</span> <span className="font-mono text-xs" style={{ color: euSpotDelta.up ? "var(--danger)" : euSpotDelta.flat ? "var(--text-muted)" : "var(--success)" }}>{euSpotDelta.text}</span></span>
+              <span className="font-semibold whitespace-nowrap" style={{ color: "var(--text-primary)" }}>{displayModel}</span>
+              <span className="hidden sm:inline" style={{ color: "var(--text-muted)" }}>·</span>
+              <span className="whitespace-nowrap" style={{ color: "var(--text-dim)" }}>NA OnDem: <span className="font-mono font-semibold" style={{ color: "var(--text-primary)" }}>{naOnDemand !== null ? `$${naOnDemand.toFixed(2)}` : "Contact"}</span> <span className="font-mono" style={{ fontSize: 10, color: naOnDemandDelta.up ? "var(--danger)" : naOnDemandDelta.flat ? "var(--text-muted)" : "var(--success)" }}>{naOnDemandDelta.text}</span></span>
+              <span className="whitespace-nowrap" style={{ color: "var(--text-dim)" }}>NA Spot: <span className="font-mono font-semibold" style={{ color: "var(--text-primary)" }}>{naSpot !== null ? `$${naSpot.toFixed(2)}` : "N/A"}</span> <span className="font-mono" style={{ fontSize: 10, color: naSpotDelta.up ? "var(--danger)" : naSpotDelta.flat ? "var(--text-muted)" : "var(--success)" }}>{naSpotDelta.text}</span></span>
+              <span className="hidden sm:inline" style={{ color: "var(--text-muted)" }}>·</span>
+              <span className="whitespace-nowrap" style={{ color: "var(--text-dim)" }}>EU OnDem: <span className="font-mono font-semibold" style={{ color: "var(--text-primary)" }}>{euOnDemand !== null ? `$${euOnDemand.toFixed(2)}` : "Contact"}</span> <span className="font-mono" style={{ fontSize: 10, color: euOnDemandDelta.up ? "var(--danger)" : euOnDemandDelta.flat ? "var(--text-muted)" : "var(--success)" }}>{euOnDemandDelta.text}</span></span>
+              <span className="whitespace-nowrap" style={{ color: "var(--text-dim)" }}>EU Spot: <span className="font-mono font-semibold" style={{ color: "var(--text-primary)" }}>{euSpot !== null ? `$${euSpot.toFixed(2)}` : "N/A"}</span> <span className="font-mono" style={{ fontSize: 10, color: euSpotDelta.up ? "var(--danger)" : euSpotDelta.flat ? "var(--text-muted)" : "var(--success)" }}>{euSpotDelta.text}</span></span>
             </div>
 
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 mb-5">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-5 mb-3 sm:mb-5">
               {([
                 { label: "North America", series: naRanged, gpu: naGpu },
                 { label: "Europe", series: euRanged, gpu: euGpu },
               ] as const).map(({ label, series, gpu }) => (
                 <div
                   key={label}
-                  className="p-5 rounded-lg"
+                  className="p-3 sm:p-5 rounded-lg"
                   style={{ backgroundColor: "var(--bg-surface)", border: "1px solid var(--border-color)" }}
                 >
                   <h3
@@ -591,15 +605,15 @@ export default function Dashboard({ data }: { data: DashboardData }) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr style={{ borderBottom: "1px solid var(--border-color)" }}>
-                      <th className="px-4 py-3 text-left text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>Region</th>
-                      <th className="px-4 py-3 text-left text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>GPUs</th>
-                      <th className="px-4 py-3 text-left text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>VRAM</th>
-                      <th className="px-4 py-3 text-left text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>vCPUs</th>
-                      <th className="px-4 py-3 text-left text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>RAM</th>
-                      <th className="px-4 py-3 text-left text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>Storage</th>
-                      <th className="px-4 py-3 text-right text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>On-Demand</th>
-                      <th className="px-4 py-3 text-right text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>Spot</th>
-                      <th className="px-4 py-3 text-right text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>Inference</th>
+                      <th className="px-2 sm:px-4 py-2 sm:py-3 text-left text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>Region</th>
+                      <th className="px-2 sm:px-4 py-2 sm:py-3 text-left text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>GPUs</th>
+                      <th className="px-2 sm:px-4 py-2 sm:py-3 text-left text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>VRAM</th>
+                      <th className="px-2 sm:px-4 py-2 sm:py-3 text-left text-xs uppercase tracking-wide font-medium hidden sm:table-cell" style={{ color: "var(--text-muted)" }}>vCPUs</th>
+                      <th className="px-2 sm:px-4 py-2 sm:py-3 text-left text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>RAM</th>
+                      <th className="px-2 sm:px-4 py-2 sm:py-3 text-left text-xs uppercase tracking-wide font-medium hidden sm:table-cell" style={{ color: "var(--text-muted)" }}>Storage</th>
+                      <th className="px-2 sm:px-4 py-2 sm:py-3 text-right text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>On-Demand</th>
+                      <th className="px-2 sm:px-4 py-2 sm:py-3 text-right text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>Spot</th>
+                      <th className="px-2 sm:px-4 py-2 sm:py-3 text-right text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>Inference</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -608,19 +622,19 @@ export default function Dashboard({ data }: { data: DashboardData }) {
                       if (!gpu) return null;
                       return (
                         <tr key={region.name} style={{ borderBottom: "1px solid var(--border-color)" }}>
-                          <td className="px-4 py-3 text-sm font-medium" style={{ color: "var(--text-primary)" }}>{region.name}</td>
-                          <td className="px-4 py-3 text-sm" style={{ color: "var(--text-dim)" }}>{gpu.gpuCount}</td>
-                          <td className="px-4 py-3 text-sm" style={{ color: "var(--text-dim)" }}>{gpu.vramGB} GB</td>
-                          <td className="px-4 py-3 text-sm" style={{ color: "var(--text-dim)" }}>{gpu.vcpus}</td>
-                          <td className="px-4 py-3 text-sm" style={{ color: "var(--text-dim)" }}>{gpu.systemRAMGB} GB</td>
-                          <td className="px-4 py-3 text-sm" style={{ color: "var(--text-dim)" }}>{gpu.localStorageTB} TB</td>
-                          <td className="px-4 py-3 text-sm text-right font-mono font-semibold" style={{ color: gpu.onDemandPrice !== null ? "var(--text-primary)" : "var(--text-muted)" }}>
+                          <td className="px-2 sm:px-4 py-2 sm:py-3 text-sm font-medium" style={{ color: "var(--text-primary)" }}>{region.name}</td>
+                          <td className="px-2 sm:px-4 py-2 sm:py-3 text-sm" style={{ color: "var(--text-dim)" }}>{gpu.gpuCount}</td>
+                          <td className="px-2 sm:px-4 py-2 sm:py-3 text-sm" style={{ color: "var(--text-dim)" }}>{gpu.vramGB} GB</td>
+                          <td className="px-2 sm:px-4 py-2 sm:py-3 text-sm hidden sm:table-cell" style={{ color: "var(--text-dim)" }}>{gpu.vcpus}</td>
+                          <td className="px-2 sm:px-4 py-2 sm:py-3 text-sm" style={{ color: "var(--text-dim)" }}>{gpu.systemRAMGB} GB</td>
+                          <td className="px-2 sm:px-4 py-2 sm:py-3 text-sm hidden sm:table-cell" style={{ color: "var(--text-dim)" }}>{gpu.localStorageTB} TB</td>
+                          <td className="px-2 sm:px-4 py-2 sm:py-3 text-sm text-right font-mono font-semibold" style={{ color: gpu.onDemandPrice !== null ? "var(--text-primary)" : "var(--text-muted)" }}>
                             {gpu.onDemandPrice !== null ? `$${gpu.onDemandPrice.toFixed(2)}` : "Contact"}
                           </td>
-                          <td className="px-4 py-3 text-sm text-right font-mono font-semibold" style={{ color: gpu.spotPrice !== null ? "var(--text-primary)" : "var(--text-muted)" }}>
+                          <td className="px-2 sm:px-4 py-2 sm:py-3 text-sm text-right font-mono font-semibold" style={{ color: gpu.spotPrice !== null ? "var(--text-primary)" : "var(--text-muted)" }}>
                             {gpu.spotPrice !== null ? `$${gpu.spotPrice.toFixed(2)}` : "N/A"}
                           </td>
-                          <td className="px-4 py-3 text-sm text-right font-mono font-semibold" style={{ color: gpu.inferencePrice !== null ? "var(--text-primary)" : "var(--text-muted)" }}>
+                          <td className="px-2 sm:px-4 py-2 sm:py-3 text-sm text-right font-mono font-semibold" style={{ color: gpu.inferencePrice !== null ? "var(--text-primary)" : "var(--text-muted)" }}>
                             {gpu.inferencePrice !== null ? `$${gpu.inferencePrice.toFixed(2)}` : "N/A"}
                           </td>
                         </tr>
@@ -736,7 +750,7 @@ export default function Dashboard({ data }: { data: DashboardData }) {
             )}
 
             {showCpuCombined && (
-              <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 mb-5">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-5 mb-3 sm:mb-5">
                 {(["North America", "Europe"] as const).map((region) => {
                   const allRegionSeries = cpuSeries.filter(
                     (s) => s.region === region && allCPUModelKeys.some((c) => s.model === `${c.model} (${c.cpuType})`)
@@ -765,7 +779,7 @@ export default function Dashboard({ data }: { data: DashboardData }) {
                   return (
                     <div
                       key={region}
-                      className="p-5 rounded-lg"
+                      className="p-3 sm:p-5 rounded-lg"
                       style={{ backgroundColor: "var(--bg-surface)", border: "1px solid var(--border-color)" }}
                     >
                       <h3 className="text-sm font-semibold uppercase tracking-wide mb-2" style={{ color: "var(--accent)" }}>
@@ -773,12 +787,12 @@ export default function Dashboard({ data }: { data: DashboardData }) {
                       </h3>
                       <div className="mb-3">
                         <div className="text-xs uppercase tracking-wide font-medium mb-1" style={{ color: "var(--text-dim)" }}>On-Demand</div>
-                        <MultiLineChart lines={lines} height={350} showDots={rangedSeries.length > 0 && rangedSeries[0]?.onDemand.length < 15} />
+                        <MultiLineChart lines={lines} height={280} showDots={rangedSeries.length > 0 && rangedSeries[0]?.onDemand.length < 15} />
                       </div>
                       {spotLines.length > 0 && (
                         <div>
                           <div className="text-xs uppercase tracking-wide font-medium mb-1" style={{ color: "var(--text-dim)" }}>Spot</div>
-                          <MultiLineChart lines={spotLines} height={350} showDots={rangedSeries.length > 0 && rangedSeries[0]?.spot.length < 15} />
+                          <MultiLineChart lines={spotLines} height={260} showDots={rangedSeries.length > 0 && rangedSeries[0]?.spot.length < 15} />
                         </div>
                       )}
                     </div>
@@ -801,14 +815,14 @@ export default function Dashboard({ data }: { data: DashboardData }) {
                 <span style={{ color: "var(--text-dim)" }}>EU Spot: <span className="font-mono font-semibold" style={{ color: "var(--text-primary)" }}>{euCpuSpot !== null ? `$${euCpuSpot.toFixed(2)}` : "N/A"}</span> <span className="font-mono text-xs" style={{ color: euCpuSDelta.up ? "var(--danger)" : euCpuSDelta.flat ? "var(--text-muted)" : "var(--success)" }}>{euCpuSDelta.text}</span></span>
               </div>
 
-              <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 mb-5">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-5 mb-3 sm:mb-5">
                 {([
                   { label: "North America", series: naCpuRanged, item: naCpu },
                   { label: "Europe", series: euCpuRanged, item: euCpu },
                 ] as const).map(({ label, series, item }) => (
                   <div
                     key={label}
-                    className="p-5 rounded-lg"
+                    className="p-3 sm:p-5 rounded-lg"
                     style={{ backgroundColor: "var(--bg-surface)", border: "1px solid var(--border-color)" }}
                   >
                     <h3
@@ -853,12 +867,12 @@ export default function Dashboard({ data }: { data: DashboardData }) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr style={{ borderBottom: "1px solid var(--border-color)" }}>
-                      <th className="px-4 py-3 text-left text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>Region</th>
-                      <th className="px-4 py-3 text-left text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>Model</th>
-                      <th className="px-4 py-3 text-left text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>Type</th>
-                      <th className="px-4 py-3 text-left text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>vCPUs</th>
-                      <th className="px-4 py-3 text-left text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>RAM</th>
-                      <th className="px-4 py-3 text-left text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>Storage</th>
+                      <th className="px-2 sm:px-4 py-2 sm:py-3 text-left text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>Region</th>
+                      <th className="px-2 sm:px-4 py-2 sm:py-3 text-left text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>Model</th>
+                      <th className="px-2 sm:px-4 py-2 sm:py-3 text-left text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>Type</th>
+                      <th className="px-2 sm:px-4 py-2 sm:py-3 text-left text-xs uppercase tracking-wide font-medium hidden sm:table-cell" style={{ color: "var(--text-muted)" }}>vCPUs</th>
+                      <th className="px-2 sm:px-4 py-2 sm:py-3 text-left text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>RAM</th>
+                      <th className="px-2 sm:px-4 py-2 sm:py-3 text-left text-xs uppercase tracking-wide font-medium hidden sm:table-cell" style={{ color: "var(--text-muted)" }}>Storage</th>
                       <th className="px-4 py-3 text-right text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>On-Demand</th>
                       <th className="px-4 py-3 text-right text-xs uppercase tracking-wide font-medium" style={{ color: "var(--text-muted)" }}>Spot</th>
                     </tr>
@@ -867,12 +881,12 @@ export default function Dashboard({ data }: { data: DashboardData }) {
                     {latest.regions.flatMap((region) =>
                       region.cpu.map((cpu) => (
                         <tr key={`${region.name}-${cpu.model}-${cpu.cpuType}`} style={{ borderBottom: "1px solid var(--border-color)" }}>
-                          <td className="px-4 py-3 text-sm" style={{ color: "var(--text-dim)" }}>{region.name}</td>
-                          <td className="px-4 py-3 text-sm font-medium" style={{ color: "var(--text-primary)" }}>{cpu.model}</td>
-                          <td className="px-4 py-3 text-sm" style={{ color: "var(--text-dim)" }}>{cpu.cpuType}</td>
-                          <td className="px-4 py-3 text-sm" style={{ color: "var(--text-dim)" }}>{cpu.vcpus}</td>
-                          <td className="px-4 py-3 text-sm" style={{ color: "var(--text-dim)" }}>{cpu.systemRAMGB} GB</td>
-                          <td className="px-4 py-3 text-sm" style={{ color: "var(--text-dim)" }}>{cpu.localStorageTB} TB</td>
+                          <td className="px-2 sm:px-4 py-2 sm:py-3 text-sm" style={{ color: "var(--text-dim)" }}>{region.name}</td>
+                          <td className="px-2 sm:px-4 py-2 sm:py-3 text-sm font-medium" style={{ color: "var(--text-primary)" }}>{cpu.model}</td>
+                          <td className="px-2 sm:px-4 py-2 sm:py-3 text-sm" style={{ color: "var(--text-dim)" }}>{cpu.cpuType}</td>
+                          <td className="px-2 sm:px-4 py-2 sm:py-3 text-sm hidden sm:table-cell" style={{ color: "var(--text-dim)" }}>{cpu.vcpus}</td>
+                          <td className="px-2 sm:px-4 py-2 sm:py-3 text-sm" style={{ color: "var(--text-dim)" }}>{cpu.systemRAMGB} GB</td>
+                          <td className="px-2 sm:px-4 py-2 sm:py-3 text-sm hidden sm:table-cell" style={{ color: "var(--text-dim)" }}>{cpu.localStorageTB} TB</td>
                           <td className="px-4 py-3 text-sm text-right font-mono font-semibold" style={{ color: cpu.onDemandPrice !== null ? "var(--text-primary)" : "var(--text-muted)" }}>
                             {cpu.onDemandPrice !== null ? `$${cpu.onDemandPrice.toFixed(2)}` : "Contact"}
                           </td>
@@ -933,8 +947,8 @@ export default function Dashboard({ data }: { data: DashboardData }) {
             </div>
 
             {storageChartSeries && (
-              <div className="grid grid-cols-1 gap-5 mb-5">
-                <div className="p-5 rounded-lg" style={{ backgroundColor: "var(--bg-surface)", border: "1px solid var(--border-color)" }}>
+              <div className="grid grid-cols-1 gap-3 sm:gap-5 mb-3 sm:mb-5">
+                <div className="p-3 sm:p-5 rounded-lg" style={{ backgroundColor: "var(--bg-surface)", border: "1px solid var(--border-color)" }}>
                   <h3 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: "var(--accent)" }}>
                     {displayStorage}
                   </h3>
@@ -1033,8 +1047,8 @@ export default function Dashboard({ data }: { data: DashboardData }) {
             </div>
 
             {netChartSeries && (
-              <div className="grid grid-cols-1 gap-5 mb-5">
-                <div className="p-5 rounded-lg" style={{ backgroundColor: "var(--bg-surface)", border: "1px solid var(--border-color)" }}>
+              <div className="grid grid-cols-1 gap-3 sm:gap-5 mb-3 sm:mb-5">
+                <div className="p-3 sm:p-5 rounded-lg" style={{ backgroundColor: "var(--bg-surface)", border: "1px solid var(--border-color)" }}>
                   <h3 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: "var(--accent)" }}>
                     {displayNet}
                   </h3>
