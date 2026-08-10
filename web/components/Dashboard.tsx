@@ -104,8 +104,8 @@ export default function Dashboard({ data }: { data: DashboardData }) {
 
   const changeTab = (cat: "gpu" | "cpu" | "storage" | "networking") => {
     setCategory(cat);
-    setSelectedModel(null);
-    setSelectedCpuModel(null);
+    setSelectedModel("__combined__");
+    setSelectedCpuModel("__cpu_combined__");
     router.replace(`?tab=${cat}`, { scroll: false });
   };
   const [selectedModel, setSelectedModel] = useState<string | null>("__combined__");
