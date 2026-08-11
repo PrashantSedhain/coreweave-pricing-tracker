@@ -394,7 +394,7 @@ export default function Dashboard({ data }: { data: DashboardData }) {
             {showCombined && (
               <>
                 <div className="flex flex-wrap gap-1.5 mb-4 items-center">
-                  <span className="text-xs mr-1" style={{ color: "var(--text-dim)" }}>Show:</span>
+                  <span className="text-xs mr-1 whitespace-nowrap" style={{ color: "var(--text-dim)" }}>Show:</span>
                   <button
                     onClick={() => setCombinedSelection(new Set(filteredModels.filter((m) => !contactOnlyModels.includes(m))))}
                     className="px-2 py-1 rounded text-xs font-medium border transition-colors"
@@ -707,7 +707,7 @@ export default function Dashboard({ data }: { data: DashboardData }) {
 
             {showCpuCombined && (
               <div className="flex flex-wrap gap-1.5 mb-4 items-center">
-                <span className="text-xs mr-1" style={{ color: "var(--text-dim)" }}>Show:</span>
+                <span className="text-xs mr-1 whitespace-nowrap" style={{ color: "var(--text-dim)" }}>Show:</span>
                 <button
                   onClick={() => setCpuCombinedSelection(new Set(allCPUModelKeys.map((c) => c.model + "|" + c.cpuType)))}
                   className="px-2 py-1 rounded text-xs font-medium border transition-colors"
@@ -717,7 +717,7 @@ export default function Dashboard({ data }: { data: DashboardData }) {
                 </button>
                 <button
                   onClick={() => setCpuCombinedSelection(new Set())}
-                  className="px-2 py-1 rounded text-xs font-medium border transition-colors"
+                  className="px-2 py-1 rounded text-[11px] sm:text-xs font-medium border transition-colors"
                   style={{ color: "var(--text-dim)", borderColor: "var(--border-color)", backgroundColor: "transparent" }}
                 >
                   None
